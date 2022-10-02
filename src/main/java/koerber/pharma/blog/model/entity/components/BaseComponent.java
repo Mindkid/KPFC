@@ -2,6 +2,7 @@ package koerber.pharma.blog.model.entity.components;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 
 
 @Getter
+@Setter
 @MappedSuperclass
 @NoArgsConstructor
 public class BaseComponent {
