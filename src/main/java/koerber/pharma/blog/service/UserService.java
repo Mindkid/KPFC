@@ -1,5 +1,6 @@
 package koerber.pharma.blog.service;
 
+import koerber.pharma.blog.controller.exception.UserNotFoundException;
 import koerber.pharma.blog.model.entity.User;
 import koerber.pharma.blog.repository.UserRepository;
 import org.apache.commons.lang3.StringUtils;
@@ -41,5 +42,10 @@ public class UserService {
         return this.userRepository.findAll(page)
                 .get()
                 .toList();
+    }
+
+    public User findUserByEmail(String email){
+        return  this.userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException(email));
     }
 }

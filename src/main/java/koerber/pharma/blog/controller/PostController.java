@@ -1,13 +1,12 @@
 package koerber.pharma.blog.controller;
 
 import koerber.pharma.blog.model.entity.components.Post;
+import koerber.pharma.blog.model.rest.PostRequest;
 import koerber.pharma.blog.service.PostService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +29,12 @@ public class PostController {
         Pageable pageToRetrieve = PageRequest.of(pageIndex, pageSize);
 
         return this.postService.retrievePost(title, body, pageToRetrieve);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Post createPost(PostRequest post){
+        return this.postService.savePost(post);
     }
 
 }

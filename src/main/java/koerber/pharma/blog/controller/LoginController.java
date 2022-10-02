@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(path = "login", produces = "application/json")
+@RequestMapping(path = "login", consumes = "application/json",  produces = "application/json")
 public class LoginController {
     private final LoginService loginService;
 

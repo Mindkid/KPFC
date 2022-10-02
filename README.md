@@ -1,7 +1,9 @@
 # KPFC
 
 ## Setup the application
-
+### Run Tests
+1. Open terminal/cmd @ root directory
+2. Run: `gradle test`
 ### Build Docker Image
 The follwing commands explain how to create a docker image of the backend:
 

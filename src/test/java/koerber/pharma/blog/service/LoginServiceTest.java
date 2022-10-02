@@ -19,13 +19,15 @@ import static org.mockito.Mockito.when;
 class LoginServiceTest {
 
     private final UserRepository userRepository;
+    private final UserService userService;
     private final LoginService loginService;
     private final EasyRandom generator;
 
     public LoginServiceTest(){
         generator = new EasyRandom();
         userRepository = Mockito.mock(UserRepository.class);
-        loginService = new LoginService(userRepository);
+        userService = new UserService(userRepository);
+        loginService = new LoginService(userService);
     }
 
     @Test
@@ -33,7 +35,7 @@ class LoginServiceTest {
         User user = generator.nextObject(User.class);
         when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
-        User retrievedUser = loginService.findUserCredentialsByEmail(user.getEmail());
+        User retrievedUser = userService.findUserByEmail(user.getEmail());
 
         assertEquals(user, retrievedUser);
     }
@@ -43,7 +45,7 @@ class LoginServiceTest {
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
         String randomEmail = generator.nextObject(String.class);
 
-        assertThrows(UserNotFoundException.class, () -> loginService.findUserCredentialsByEmail(randomEmail));
+        assertThrows(UserNotFoundException.class, () -> userService.findUserByEmail(randomEmail));
     }
 
     @Test
