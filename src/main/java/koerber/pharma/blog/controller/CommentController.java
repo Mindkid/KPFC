@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "posts", produces = "application/json")
+@RequestMapping(path = "comments", produces = "application/json")
 public class CommentController {
 
     private final CommentService commentService;

@@ -45,6 +45,10 @@ dependencies {
 	testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.9.0'
 }
 
+bootJar {
+	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }

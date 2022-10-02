@@ -1,15 +1,13 @@
-
 spring:
   datasource:
     url: jdbc:postgresql://${DB_URL:localhost}:5432/postgres
-    username: ${USER_NAME}
-    password: ${USER_PWD}
+    username: ${USER_NAME:postgres}
+  sql:
+    init:
+      mode: always
   jpa:
-    hibernate.ddl-auto: create
+    hibernate.ddl-auto: create-drop
     defer-datasource-initialization: true
-
-lombok:
-  equalsAndHashCode.callSuper: call
 
 
 
