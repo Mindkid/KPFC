@@ -1,13 +1,16 @@
 package koerber.pharma.blog.model.entity.components;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 
-@Data
+
+@Getter
 @MappedSuperclass
+@NoArgsConstructor
 public class BaseComponent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
